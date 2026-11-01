@@ -1,43 +1,70 @@
+# Cryptocurrency Price Prediction
 
-Credit Card Fraud Detection
+A machine learning project I built to predict cryptocurrency price movements using Python and XGBoost.
 
-A machine learning project I built to detect potentially fraudulent credit card transactions using a neural network.
+The goal was to predict whether the next recorded price would go up or down based on historical P2P exchange data.
 
-The main challenge in this project is the imbalanced dataset: fraud cases are much rarer than normal transactions. I focused on preparing the data carefully, training a model that pays attention to the minority class, and evaluating its predictions with the right metrics.
-What I did
+## About the Project
 
-    Explored the transaction data and checked for missing values.
-    Created additional features from transaction amount and elapsed time.
-    Split the dataset into training, validation, and test sets.
-    Standardized the features using statistics from the training data only.
-    Built a neural network with TensorFlow/Keras and used class weights and focal loss to help with class imbalance.
-    Selected the classification threshold on the validation set and evaluated the final model on a separate test set.
+I wanted to explore how machine learning could be used to analyze cryptocurrency markets and identify price movement patterns.
 
-Tools and libraries
+I worked with real exchange data, cleaned and prepared it, created new features, and trained an XGBoost classification model to predict price direction.
 
-    Python
-    Pandas and NumPy
-    Scikit-learn
-    TensorFlow / Keras
-    Matplotlib
-    KaggleHub (to download the dataset)
+## What I Did
 
-Dataset
+- Explored the dataset and handled missing or invalid values.
+- Worked with historical cryptocurrency P2P exchange data.
+- Created features from timestamps and pricing information.
+- Prepared the data for machine learning.
+- Split the dataset chronologically into training and testing sets.
+- Trained an XGBoost classification model.
+- Evaluated predictions using accuracy, precision, recall, F1-score, and a confusion matrix.
 
-I used the public, anonymized Credit Card Fraud Detection dataset, which contains transactions labeled as legitimate (0) or fraudulent (1). The dataset file is not included in this repository.
-How to run
+## Technologies Used
 
-    Download credit_card_fraud_detection_FIXED.ipynb or open it in Google Colab / Jupyter Notebook.
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- XGBoost
+- Matplotlib
+- Jupyter Notebook
 
-    Install the dependencies if needed:
-    pip install pandas numpy scikit-learn tensorflow kagglehub matplotlib
+## Dataset
 
-    Run the notebook from top to bottom. It will use creditcard.csv in the working directory if available; otherwise, it will try to download the dataset with KaggleHub (internet access required).
+I used the P2P BOB Exchange dataset available on Kaggle.
 
-    Check the classification report, confusion matrix, fraud precision, recall, F1-score, and PR-AUC printed at the end.
+[Dataset on Kaggle](https://www.kaggle.com/datasets/andreschirinos/p2p-bob-exchange)
 
-Notes
+## How It Works
 
-Fraud detection is not just about overall accuracy, because a model can predict most transactions as legitimate and still appear highly accurate. That's why I focused on precision, recall, F1-score, and PR-AUC.
+1. Load the historical exchange dataset.
+2. Clean the data and prepare the features.
+3. Create labels based on whether the next recorded price increases.
+4. Split the data into training and testing sets based on time.
+5. Train the XGBoost model.
+6. Evaluate its predictions on the test data.
 
-The notebook is a learning project, not a production fraud detection system. I haven't included final performance numbers here until the notebook has been run and verified on the complete dataset.
+## How to Run
+
+1. Download or clone this repository.
+2. Open `crypto_price_predication.ipynb` in Jupyter Notebook or Google Colab.
+3. Install the required libraries:
+
+   `pip install pandas numpy scikit-learn xgboost kagglehub pyarrow matplotlib`
+
+4. Run the notebook cells in order.
+
+The notebook can download the dataset using KaggleHub or read a local `dashboard_summary.parquet` file.
+
+## What I Learned
+
+This project helped me understand how important data preprocessing and feature engineering are in machine learning.
+
+I also learned how to work with time-based datasets, avoid data leakage, and evaluate classification models using different metrics.
+
+## Limitations
+
+The model predicts the direction of the next recorded price, not the exact future cryptocurrency price.
+
+It is a learning project and is not intended to provide financial or trading advice.
